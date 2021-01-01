@@ -17,17 +17,17 @@ const getRandomDay = () => Math.floor(Math.random() * 28) + 1;
 //picking a random patient from the list
 const getRandomPatient = () => {
     const person = data.patients[Math.floor(Math.random() * data.patients.length)]
-    return `${person.firstname} ${person.surname}`;
+    return person
 }
 
 const getRandomDentist = () => {
     const person = data.dentists[Math.floor(Math.random() * data.dentists.length)]
-    return `${person.firstname} ${person.surname}`;
+    return person
 }
 
 const getRandomAssistant = () => {
     const person = data.assistants[Math.floor(Math.random() * data.assistants.length)]
-    return `${person.firstname} ${person.surname}`;
+    return person
 }
 
 const getRandomType = () => {

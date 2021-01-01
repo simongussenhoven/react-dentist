@@ -11,7 +11,7 @@ const data = {
         {id:9, firstname:"Viviana", surname:"Zavattero", birthyear:1945, phone:"424-536-4188", mail:"vzavattero8@imageshack.us", isIll: false}, 
         {id:10, firstname:"Cahra", surname:"Neil", birthyear:1986, phone:"921-966-8086", mail:"cneil9@dailymotion.com", isIll: false}, 
         {id:11, firstname:"Shelli", surname:"Hail", birthyear:1967, phone:"363-583-5300", mail:"shaila@pinterest.com", isIll: false}, 
-        {id:12, firstname:"Alanson", surname:"Canadas", birthyear:2007, phone:"942-739-5267", mail:"acanadasb@dropbox.com", isIll: false}, 
+        {id:12, firstname:"Alanson", surname:"Canadas", birthyear:2007, phone:"942-739-5267", mail:"acanadasb@dropbox.com", isIll: true}, 
         {id:13, firstname:"Fidelio", surname:"Ruffle", birthyear:1993, phone:"411-704-2773", mail:"frufflec@buzzfeed.com", isIll: false}, 
         {id:14, firstname:"Griffin", surname:"Woodger", birthyear:1959, phone:"618-396-5813", mail:"gwoodgerd@vistaprint.com", isIll: false}, 
         {id:15, firstname:"Brett", surname:"Pudan", birthyear:2006, phone:"930-465-2535", mail:"bpudane@pen.io", isIll: false}, 

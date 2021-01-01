@@ -22,7 +22,7 @@ class App extends React.Component {
       appointments: generateRandomAppointments(150)
     }
   }
-
+  
   render() {
     return(
       <Router>
