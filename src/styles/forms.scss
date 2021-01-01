@@ -1,0 +1,54 @@
+.formcontainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form {
+  background: #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  margin: 1px;
+  flex-grow: 1;
+  margin: 10px;
+  padding: 10px;
+  h1,
+  h2 {
+    margin: 15px;
+    align-self: center;
+  }
+  input,
+  select,
+  label {
+    margin: 10px 20px 10px 20px;
+    height: 30px;
+    font-size: 18px;
+  }
+  label {
+    display: flex;
+  }
+  .submit {
+    margin-top: auto;
+    height: 35px;
+    transition: ease-in-out 0.1s;
+    color: grey;
+    &:hover {
+      background-color: orange;
+      transition: ease-in-out 0.1s;
+      font-size: 19px;
+    }
+  }
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  width: 50%;
+  align-self: center;
+  margin: 20px;
+  input {
+    margin: 0px 10px 0px 10px;
+    width: 25px;
+  }
+}

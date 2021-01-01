@@ -1,0 +1,85 @@
+.formcontainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+form {
+  background: #dbdbdb;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 10px;
+  padding: 10px;
+}
+
+form h1,
+form h2 {
+  margin: 15px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+form input,
+form select,
+form label {
+  margin: 10px 20px 10px 20px;
+  height: 30px;
+  font-size: 18px;
+}
+
+form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form .submit {
+  margin-top: auto;
+  height: 35px;
+  -webkit-transition: ease-in-out 0.1s;
+  transition: ease-in-out 0.1s;
+  color: grey;
+}
+
+form .submit:hover {
+  background-color: orange;
+  -webkit-transition: ease-in-out 0.1s;
+  transition: ease-in-out 0.1s;
+  font-size: 19px;
+}
+
+.checkboxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid white;
+  width: 50%;
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin: 20px;
+}
+
+.checkboxes input {
+  margin: 0px 10px 0px 10px;
+  width: 25px;
+}
+/*# sourceMappingURL=forms.css.map */

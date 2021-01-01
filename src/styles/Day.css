@@ -26,6 +26,7 @@
 }
 
 .dayview .dentist,
-.dayview .assistant {
+.dayview .assistant,
+.type {
   padding: 10px;
 }
