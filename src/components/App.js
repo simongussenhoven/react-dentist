@@ -9,14 +9,13 @@ import Day from "./Day";
 import generateRandomAppointments from "../functions/generateRandomAppointments.js";
 import data from "../database.js";
 
-const appointments = generateRandomAppointments(150);
-console.log(appointments)
-
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      patients: data.patients,
+      patients: data.patients.sort(function(a, b) {
+        return a.surname - b.surname;
+    }),
       dentists: data.dentists,
       assistants: data.assistants,
       appointments: generateRandomAppointments(150)
@@ -49,7 +48,7 @@ class App extends React.Component {
                 <Day appointments={this.state.appointments.filter(app => app.day === 1)} />
               </Route>
               <Route path="/">
-                <Home />
+                <Home data={this.state}/>
               </Route>
             </Switch>
           </main>
