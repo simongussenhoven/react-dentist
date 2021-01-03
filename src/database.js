@@ -55,7 +55,7 @@ const data = {
         {id: 1, firstname:"Bob", surname:"de Bouwer", mail:"bob.debouwer@tandartspraktijkbvt.nl", skills: [1], isIll: false},
         {id: 2, firstname:"Frits", surname:"Friemel", mail:"frits.friemel@tandartspraktijkbvt.nl", skills: [1, 3, 4], isIll: false},
         {id: 3, firstname:"Anja", surname:"Oliebol", mail:"bob.debouwer@tandartspraktijkbvt.nl", skills: [1, 4], isIll: false},
-        {id: 3, firstname:"Marjan", surname:"Appelflap", mail:"bob.debouwer@tandartspraktijkbvt.nl", skills: [1, 2], isIll: false}
+        {id: 4, firstname:"Marjan", surname:"Appelflap", mail:"bob.debouwer@tandartspraktijkbvt.nl", skills: [1, 2], isIll: false}
     ],
     assistants: [
         {id: 1, firstname:"Clara", surname:"Knalfuif", mail: "clara.knalfuif@tandartspraktijkbvt.nl", isIll: false},

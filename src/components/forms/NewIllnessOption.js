@@ -1,9 +1,8 @@
 import React from 'react'
 
 function NewIllnessOption (props) {
-    console.log(props)
     return(
-        <option>{props.person.firstname} {props.person.surname}</option>
+        <option>{props.firstname} {props.surname}</option>
     )
 }
 export default NewIllnessOption

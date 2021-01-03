@@ -11,28 +11,33 @@ class NewIllness extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange = (event) => {
+    handleChange = (event) => { 
         this.setState ({
             selected: this.props.data[event.target.value]
         })
     }
 
+    handleSubmit = (event) => {
+        console.log(event.target.person.value)
+        console.log(event.target.type.value)
+        event.preventDefault();
+    }
+
     render(){
         const getOptions = 
                 this.state.selected.map(person => {
-                    return <NewIllnessOption person={person}/>
+                    return <NewIllnessOption {...person} key={person.id}/>
             })
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <h1>Mark for illness</h1>
-                <select onChange={this.handleChange} required>
+                <select name="type" onChange={this.handleChange} required>
                     <option value="" disabled selected>{this.state.selector}</option>
                     <option value="patients">Patient</option>
                     <option value="dentists">Dentist</option>
-                    <option value="assistants">Assistant</option>
                 </select>
-                <select required>
-                    <option value="" disabled defaultValue>Select a Person</option>
+                <select name="person" required>
+                    <option value="" disabled selected>Select a Person</option>
                     {getOptions}
                 </select>
                 <input className="submit" type="submit" value="Mark as ill"/>
