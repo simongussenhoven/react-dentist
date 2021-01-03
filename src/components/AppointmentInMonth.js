@@ -2,8 +2,8 @@ import React from "react";
 
 const format_time = time => (time < 10 ? `0${time}:00u` : `${time}:00u`);
 
-export default ({ time, patient, dentist, assistant }) => {
-  if (patient.isIll||dentist.isIll||assistant.isIll){
+export default ({ time, patient, dentist }) => {
+  if (dentist.isIll){
     return (
       <div className="appointment ill">
         <span className="time">{format_time(time)}</span>

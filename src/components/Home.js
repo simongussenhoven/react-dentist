@@ -9,7 +9,7 @@ function Home (data) {
         <div className="formcontainer">
             <NewEmployee/>
             <NewPatient/>
-            <NewIllness {...data}/>
+            <NewIllness markIll={data.markIll} {...data}/>
         </div>
     )
 }

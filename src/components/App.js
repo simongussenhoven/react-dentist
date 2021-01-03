@@ -1,27 +1,54 @@
 import React from "react";
 import "../styles/App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import Home from "./Home";
 import Calendar from "./Calendar";
 import Day from "./Day";
-
-import generateRandomAppointments from "../functions/generateRandomAppointments.js";
 import data from "../database.js";
+import generateRandomAppointments from "../functions/generateRandomAppointments.js";
+
+const randomAppointments = generateRandomAppointments(150)
 
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      patients: data.patients.sort(function(a, b) {
-        return a.surname - b.surname;
-    }),
-      dentists: data.dentists,
-      assistants: data.assistants,
-      appointments: generateRandomAppointments(150)
+      patients: [],
+      dentists: [],
+      assistants: [],
+      appointments: [],
     }
+    this.makeDentistSick = this.makeDentistSick.bind(this);
+    this.makePatientSick = this.makePatientSick.bind(this);
   }
 
+componentDidMount (){
+  this.setState ({
+      patients: data.patients,
+      dentists: data.dentists,
+      assistants: data.assistants,
+      appointments: randomAppointments
+  })
+}
+
+makeDentistSick(newList){
+  this.setState ({
+    dentists: newList
+  })
+  alert("Dentist is marked ill, check the calendar for planning.")
+}
+
+componentDidUpdate(){
+  console.log(this.state.appointments)
+}
+
+makePatientSick(newList){
+  console.log(newList)
+  this.setState ({
+    appointments: newList
+  })
+  console.log(this.state.appointments)
+}
 
   render() {
     return(
@@ -49,7 +76,7 @@ class App extends React.Component {
                 <Day appointments={this.state.appointments.filter(app => app.day === 1)} />
               </Route>
               <Route path="/">
-                <Home data={this.state}/>
+                <Home data={this.state} makeDentistSick={this.makeDentistSick} makePatientSick={this.makePatientSick}/>
               </Route>
             </Switch>
           </main>

@@ -16,7 +16,7 @@ const divideByDay = appointments => {
 
 export default ({ appointments }) => {
   const appointmentsByDay = divideByDay(appointments);
-
+  console.log("Calendar rendered")
   const daysInMonthJSX = 
     Object
       .values(appointmentsByDay)

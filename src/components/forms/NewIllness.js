@@ -6,38 +6,67 @@ class NewIllness extends React.Component {
         super(props);
         this.state = {
             selector: "Please select a type of person",
-            selected: []
+            selected: [],
+            appointments: props.data.appointments
         };
         this.handleChange = this.handleChange.bind(this);
     }
 
+    //updating changes made in the form
     handleChange = (event) => { 
+        const selection = this.props.data[event.target.value].sort((a, b) => {
+            return a.firstname.localeCompare(b.firstname)
+        });
         this.setState ({
-            selected: this.props.data[event.target.value]
+            selected: selection
         })
     }
 
+    //Handling submit event to mark as ill
     handleSubmit = (event) => {
-        console.log(event.target.person.value)
-        console.log(event.target.type.value)
         event.preventDefault();
+        //get the type and person id from the form
+        const type = event.target.type.value
+        const id = event.target.id.value
+
+        //for dentists, just change the isIll boolean and pass back to App
+        if (type === "dentists") {
+            const newList = this.state.selected;
+            newList[id].isIll = true;
+            this.props.makeDentistSick(newList);
+        }
+
+        //for patients, get the array of appointments and
+        else {   
+            const id = parseInt(event.target.id.value);
+            const appointments = this.state.appointments.filter (app => {
+                return app.patient.id !== id
+                }
+            )
+            this.setState ({
+                appointments
+            })
+            this.props.makePatientSick(this.state.appointments)
+        }
+        event.target.reset();
     }
 
     render(){
         const getOptions = 
                 this.state.selected.map(person => {
                     return <NewIllnessOption {...person} key={person.id}/>
+                    
             })
         return (
             <form onSubmit={this.handleSubmit}>
                 <h1>Mark for illness</h1>
                 <select name="type" onChange={this.handleChange} required>
-                    <option value="" disabled selected>{this.state.selector}</option>
+                    <option value="" defaultValue="">{this.state.selector}</option>
                     <option value="patients">Patient</option>
                     <option value="dentists">Dentist</option>
                 </select>
-                <select name="person" required>
-                    <option value="" disabled selected>Select a Person</option>
+                <select name="id" required>
+                    <option value="" defaultValue="" selected>Select a Person</option>
                     {getOptions}
                 </select>
                 <input className="submit" type="submit" value="Mark as ill"/>
