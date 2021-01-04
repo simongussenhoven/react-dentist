@@ -7,7 +7,7 @@ import NewIllness from './forms/NewIllness'
 function Home (data) {
     return(
         <div className="formcontainer">
-            <NewEmployee/>
+            <NewEmployee addDentist={data.addDentist}/>
             <NewPatient/>
             <NewIllness markIll={data.markIll} {...data}/>
         </div>

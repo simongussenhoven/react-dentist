@@ -20,6 +20,7 @@ class App extends React.Component {
     }
     this.makeDentistSick = this.makeDentistSick.bind(this);
     this.makePatientSick = this.makePatientSick.bind(this);
+    this.addDentist = this.addDentist.bind(this);
   }
 
 componentDidMount (){
@@ -38,16 +39,55 @@ makeDentistSick(newList){
   alert("Dentist is marked ill, check the calendar for planning.")
 }
 
-componentDidUpdate(){
-  console.log(this.state.appointments)
-}
-
 makePatientSick(newList){
-  console.log(newList)
   this.setState ({
     appointments: newList
   })
-  console.log(this.state.appointments)
+}
+
+addDentist (event) {
+  event.preventDefault();
+  //set skills to be filled
+  const skills = [];
+
+  //get the type of employee to set
+  const type = event.target.type.value;
+
+  //get all the checkboxs from the form
+  const checkboxes = Array.from(document.getElementsByClassName('skill-checkbox'));
+  
+  //check which skills is added and push to skills array of employee
+  checkboxes.forEach(checkbox => {
+    if (checkbox.checked){
+      skills.push(parseInt(checkbox.value))
+    }
+  })
+
+  //compile the person
+  const newPerson = {
+    id: this.state[event.target.type.value].slice(-1)[0].id +1,
+    firstname: event.target.firstname.value,
+    surname: event.target.surname.value,
+    email: `${event.target.firstname.value}.${event.target.surname.value}@tandartspraktijkbvt.nl`,
+    skills: skills
+  }
+
+  const employees = this.state[event.target.type.value]
+  employees.push(newPerson)
+  
+ 
+  //push the person to the corresponding array
+  if (type === "dentists") {
+    this.setState ({
+      dentists: employees
+    })
+  }
+  else {
+    this.setState ({
+      assistants: employees
+    })
+  }
+  console.log(this.state.dentists)
 }
 
   render() {
@@ -76,7 +116,12 @@ makePatientSick(newList){
                 <Day appointments={this.state.appointments.filter(app => app.day === 1)} />
               </Route>
               <Route path="/">
-                <Home data={this.state} makeDentistSick={this.makeDentistSick} makePatientSick={this.makePatientSick}/>
+                <Home 
+                data={this.state} 
+                makeDentistSick={this.makeDentistSick} 
+                makePatientSick={this.makePatientSick}
+                addDentist={this.addDentist}
+                />
               </Route>
             </Switch>
           </main>
