@@ -14,9 +14,7 @@ class NewIllness extends React.Component {
 
     //updating changes made in the form
     handleChange = (event) => { 
-        const selection = this.props.data[event.target.value].sort((a, b) => {
-            return a.firstname.localeCompare(b.firstname)
-        });
+        const selection = this.props.data[event.target.value]
         this.setState ({
             selected: selection
         })
@@ -60,13 +58,13 @@ class NewIllness extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <h1>Mark for illness</h1>
-                <select name="type" onChange={this.handleChange} required>
-                    <option value="" defaultValue="">{this.state.selector}</option>
+                <select name="type" onChange={this.handleChange} defaultValue="" required>
+                    <option value="" disabled>{this.state.selector}</option>
                     <option value="patients">Patient</option>
                     <option value="dentists">Dentist</option>
                 </select>
-                <select name="id" required>
-                    <option value="" defaultValue="" selected>Select a Person</option>
+                <select name="id" defaultValue="" required >
+                    <option value="" disabled>Select a Person</option>
                     {getOptions}
                 </select>
                 <input className="submit" type="submit" value="Mark as ill"/>

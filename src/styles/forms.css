@@ -2,6 +2,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -21,6 +25,8 @@ form {
           flex-grow: 1;
   margin: 10px;
   padding: 10px;
+  -webkit-filter: drop-shadow(4px 2px 2px #414141);
+          filter: drop-shadow(4px 2px 2px #414141);
 }
 
 form h1,
@@ -31,33 +37,41 @@ form h2 {
       align-self: center;
 }
 
+form select {
+  cursor: pointer;
+}
+
 form input,
 form select,
 form label {
   margin: 10px 20px 10px 20px;
   height: 30px;
-  font-size: 18px;
+  font-size: 16px;
+  padding-left: 10px;
+  -webkit-filter: drop-shadow(2px 2px 2px #414141);
+          filter: drop-shadow(2px 2px 2px #414141);
 }
 
 form label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-filter: none;
+          filter: none;
 }
 
 form .submit {
   margin-top: auto;
   height: 35px;
-  -webkit-transition: ease-in-out 0.1s;
-  transition: ease-in-out 0.1s;
-  color: grey;
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
+  cursor: pointer;
 }
 
 form .submit:hover {
   background-color: orange;
   -webkit-transition: ease-in-out 0.1s;
   transition: ease-in-out 0.1s;
-  font-size: 19px;
 }
 
 .checkboxes {
@@ -68,11 +82,9 @@ form .submit:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding-left: 30px;
   border: 1px solid white;
-  width: 50%;
+  width: 80%;
   -ms-flex-item-align: center;
       align-self: center;
   margin: 20px;
@@ -81,5 +93,7 @@ form .submit:hover {
 .checkboxes input {
   margin: 0px 10px 0px 10px;
   width: 25px;
+  padding-left: 30px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=forms.css.map */

@@ -24,6 +24,8 @@
   border: 1px solid lightblue;
   padding: 0.5rem;
   background-color: lightyellow;
+  display: flex;
+  flex-direction: column;
 }
 
 .calendarview .patient {
@@ -36,4 +38,15 @@
 .ill {
   background-color: #fb0202;
   color: white;
+}
+
+.editbutton-container {
+  margin-top: auto;
+}
+
+.editbutton {
+  width: 100%;
+  margin-top: 20px;
+  height: 30px;
+  cursor: pointer;
 }

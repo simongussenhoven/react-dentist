@@ -1,5 +1,6 @@
 .formcontainer {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
@@ -11,30 +12,36 @@ form {
   flex-grow: 1;
   margin: 10px;
   padding: 10px;
+  filter: drop-shadow(4px 2px 2px rgb(65, 65, 65));
   h1,
   h2 {
     margin: 15px;
     align-self: center;
+  }
+  select {
+    cursor: pointer;
   }
   input,
   select,
   label {
     margin: 10px 20px 10px 20px;
     height: 30px;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
+    filter: drop-shadow(2px 2px 2px rgb(65, 65, 65));
   }
   label {
     display: flex;
+    filter: none;
   }
   .submit {
     margin-top: auto;
     height: 35px;
-    transition: ease-in-out 0.1s;
-    color: grey;
+    transition: ease-in-out 0.5s;
+    cursor: pointer;
     &:hover {
       background-color: orange;
       transition: ease-in-out 0.1s;
-      font-size: 19px;
     }
   }
 }
@@ -42,13 +49,15 @@ form {
 .checkboxes {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding-left: 30px;
   border: 1px solid white;
-  width: 50%;
+  width: 80%;
   align-self: center;
   margin: 20px;
   input {
     margin: 0px 10px 0px 10px;
     width: 25px;
+    padding-left: 30px;
+    cursor: pointer;
   }
 }
