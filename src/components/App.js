@@ -28,6 +28,7 @@ class App extends React.Component {
     this.makePatientSick = this.makePatientSick.bind(this);
     this.addDentist = this.addDentist.bind(this);
     this.addAppointment = this.addAppointment.bind(this);
+    this.removeAppointment = this.removeAppointment.bind(this);
     }
 
 
@@ -91,10 +92,20 @@ class App extends React.Component {
         addAppointment(newAppointment){
             const appointments = this.state.appointments
             appointments.push(newAppointment)
+            console.log(newAppointment)
             this.setState({
                 appointments
             })
+            alert('Appointment added, thank you.')
+        }
 
+        removeAppointment(appointment){
+            const appointments = this.state.appointments.filter(app => {
+                return app.id !== appointment
+            })
+            this.setState ({
+                appointments
+            })
         }
 
     render() {
@@ -117,7 +128,7 @@ class App extends React.Component {
             <main>
                 <Switch>
                 <Route path="/calendar">
-                    <Calendar appointments={this.state.appointments} />
+                    <Calendar appointments={this.state.appointments} removeAppointment={this.removeAppointment}/>
                 </Route>
                 <Route path="/day">
                     <Day appointments={this.state.appointments.filter(app => app.day === 1)} />

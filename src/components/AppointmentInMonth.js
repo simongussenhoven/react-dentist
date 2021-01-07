@@ -2,7 +2,7 @@ import React from "react";
 
 const format_time = time => (time < 10 ? `0${time}:00u` : `${time}:00u`);
 
-export default ({ time, patient, dentist }) => {
+export default ({ time, patient, dentist, removeAppointment, id }) => {
     if (dentist.isIll){
         return (
         <div className="appointment ill">
@@ -15,6 +15,7 @@ export default ({ time, patient, dentist }) => {
         <div className="appointment">
             <span className="time">{format_time(time)}</span>
             <span className="patient">{`${patient.firstname} ${patient.surname}`}</span>
+            <span className="remove"onClick={() => {removeAppointment(id)}}>remove</span>
         </div>
         )
     }

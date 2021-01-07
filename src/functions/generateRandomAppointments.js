@@ -40,8 +40,11 @@ const getRandomType = () => {
 //generate x amount of appointments
 const generateRandomAppointments = amount => {
     const appointments = [];
+    let id = 0
     for (let i = amount; i > 0; --i){
+        id++
         const appointment = {
+            id: id,
             time: getRandomTime(),
             day: getRandomDay(),
             patient: getRandomPatient(),

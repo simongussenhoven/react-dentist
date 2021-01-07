@@ -45,6 +45,7 @@ class NewAppointment extends React.Component {
         const dentists = this.state.dentists.filter(dentist => {
             return dentist.skills.includes(event.target.value)
         })
+        
         const assistants = this.state.assistants.filter(assist => {
             return assist.skills.includes(event.target.value)
         })
@@ -79,13 +80,13 @@ class NewAppointment extends React.Component {
             selectedDay: parseInt(event.target.value)
         })
     }
-
+    //When the time is selected, set is to state
     setTime = (event) => {
         this.setState ({
             selectedTime: parseInt(event.target.value)
         })
     }
-
+    //on submit, call function from ./app and push the appointment
     handleSubmit = (event) => {
         event.preventDefault();
         const checkAssistant = () => {
@@ -98,6 +99,7 @@ class NewAppointment extends React.Component {
                 return null
             }
         }
+        //compile the new appointment
         const appointment = {
             patient: this.state.patients.find (patient => {return patient.id === this.state.selectedPatient}),
             type: this.state.selectedType,
@@ -106,7 +108,8 @@ class NewAppointment extends React.Component {
             day: this.state.selectedDay,
             time: this.state.selectedTime,
         }
-        this.props.addAppointment(appointment)
+        this.props.addAppointment(appointment);
+        event.target.reset();
     }
     
     render () {
@@ -118,12 +121,12 @@ class NewAppointment extends React.Component {
         
         //use this fo the list of dentists with the selectes skill
         const eligibleDentists = this.state.eligibleDentists.map(person => {
-            return <NewAppointmentPerson {...person} key={uuid()}/>
+            return <NewAppointmentPerson {...person} key={person.id}/>
         })
 
         //use this for the assistants with the selected skill
         const eligibleAssistants = this.state.eligibleAssistants.map(person => {
-            return <NewAppointmentPerson {...person} key={uuid()}/>
+            return <NewAppointmentPerson {...person} key={person.id}/>
         })
 
         //use this to get the available times for the selected day, with the selected dentist and assistant
@@ -232,6 +235,7 @@ class NewAppointment extends React.Component {
                         <option value="27">27</option>
                         <option value="28">28</option>
                 </select>
+
                 <select defaultValue="" onChange={this.setTime}>
                     <option disabled value="">Select an open timeslot</option>
                     {eligibleTimes}
