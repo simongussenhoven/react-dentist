@@ -112,26 +112,30 @@ class App extends React.Component {
             }
         }
 
-        editAppointment (id) {
-            const day = parseInt(prompt("Enter a new day (1 - 28)"));
-            const selectedApp = this.state.appointments.find(app => app.id === id);
+        editAppointment (appId) {
+            const selectedDay = parseInt(prompt("Enter a new day (1 - 28)"));
+            const selectedApp = this.state.appointments.find(app => app.id === appId);
             const appsOnTime = this.state.appointments
-                .filter(app => app.day === day)
+                .filter(app => app.day === selectedDay)
                 .filter(app => app.time === selectedApp.time);
-            
-            const times = Array.from({length:11},(v,k)=>k+8);
-            
-            const freeTimes = [];
-            times.forEach(time => {
-                let isFree = true;
-                appsOnTime.forEach(app => {
-                    if (app.dentist.id === selectedApp.dentist.id || app.assistant.id === selectedApp.assistant.id){isFree = false}})
-                if(isFree){freeTimes.push(time)}
+            let times = Array.from({length:11},(v,k)=>k+8);
+            appsOnTime.forEach(app => {
+                if(app.dentist.id === selectedApp.dentist.id || app.assistant.id === selectedApp.assistant.id){
+                    console.log(app.time)
+                    times = times.filter(time => app.time !== time)
+                }
             })
-            const selectedTime = prompt(`Select a free time ${freeTimes}`);
-            if (selectedTime.includes(freeTimes){
-                selectedApp.time = selectedTime
-                this.state.appointments.filter(app => {return app.id !== id})
+            const selectedTime = parseInt(prompt(`Pick an available time (${times})`))
+            if(times.includes(selectedTime)){
+                selectedApp.time = selectedTime;
+                selectedApp.day = selectedDay;
+                const appointments = [...this.state.appointments, selectedApp];
+                this.setState({
+                    appointments
+                })
+            }
+            else{
+                alert('Invalid time. Move aborted. Please try again.')
             }
         }
     render() {
