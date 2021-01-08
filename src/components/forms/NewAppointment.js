@@ -40,9 +40,9 @@ class NewAppointment extends React.Component {
     }
 
         //when the type is selected, check which employees have the required skill
-        getEligible (event) {
-            const dentists = this.state.dentists.filter(dentist => {
-                return dentist.skills.includes(event.target.value)
+    getEligible (event) {
+        const dentists = this.state.dentists.filter(dentist => {
+            return dentist.skills.includes(event.target.value)
         })
         
         const assistants = this.state.assistants.filter(assist => {
@@ -233,7 +233,7 @@ class NewAppointment extends React.Component {
                         <option value="27">27</option>
                         <option value="28">28</option>
                 </select>
-
+                {/*Select a time from available times*/}
                 <select defaultValue="" onChange={this.setTime}>
                     <option disabled value="">Select an open timeslot</option>
                     {eligibleTimes}

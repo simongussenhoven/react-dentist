@@ -27,17 +27,17 @@ class App extends React.Component {
     this.newPatient = this.newPatient.bind(this);
     }
 
+    //function to add new patient used in NewPatient
     newPatient (patient){
-        const patients = [...this.state.patients, patient]
-        patients.sort((a, b) => {
-            return a.firstname.localeCompare(b.firstname)
-        })
+        const patients = this.state.patients
+        patients.push(patient)
         this.setState ({
             patients
         })
         alert(`Patient "${patient.firstname} ${patient.surname}" added`)
     }
 
+    //function to make dentist sick, used in NewIllness
     makeDentistSick(dentists){
         alert("Dentist is marked ill, check the calendar for planning.")
         this.setState ({
@@ -45,6 +45,7 @@ class App extends React.Component {
         })
     }
 
+    //function to make patient sick, used in forms in NewIllness
     makePatientSick(appointments){
         alert("Patient marked ill. Appointments removed.")
         this.setState ({
@@ -52,10 +53,10 @@ class App extends React.Component {
         })
     }
 
+    //function to add dentist, used in newEmployee
     addDentist (event) {
         event.preventDefault();
         //set skills to be filled
-        const skills = [];
 
         //get the type of employee to set
         const type = event.target.type.value;
@@ -64,10 +65,8 @@ class App extends React.Component {
         const checkboxes = Array.from(document.getElementsByClassName('skill-checkbox'));
     
         //check which skills is added and push to skills array of employee
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked){
-                skills.push(checkbox.value)
-            }
+        const skills = checkboxes.map(checkbox => {
+            if (checkbox.checked){return checkbox.value}
         })
 
         //compile the person
@@ -81,12 +80,14 @@ class App extends React.Component {
         const employees = this.state[event.target.type.value]
         employees.push(newPerson)
 
-        //push the person to the corresponding array
+        //push the person to the corresponding array if the type is dentist
         if (type === "dentists") {
             this.setState ({
                 dentists: employees
             })
         }
+
+        //or if the type is assistant
         else {
             this.setState ({
                 assistants: employees
@@ -96,7 +97,7 @@ class App extends React.Component {
         alert("Person added. Thank you.")
         }
         
-        //function to remove the appointment
+        //function to add an appoint, used in NewAppointment
         addAppointment(newAppointment){
             const appointments = this.state.appointments
             appointments.push(newAppointment)
@@ -106,6 +107,7 @@ class App extends React.Component {
             alert('Appointment added, thank you.')
         }
 
+        //function to remove an appointment, used in calendar
         removeAppointment(appointment){   
         const answer = window.confirm("Do you want to remove this appointment?");
             if (answer) {
@@ -118,6 +120,7 @@ class App extends React.Component {
             }
         }
 
+        //function to edit an appointment, used in calendar
         editAppointment (appId) {
             const selectedDay = parseInt(prompt("Enter a new day (1 - 28)"));
             const selectedApp = this.state.appointments.find(app => app.id === appId);

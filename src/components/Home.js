@@ -9,8 +9,8 @@ function Home (data) {
     return(
         <div className="formcontainer">
                     <NewAppointment {...data}/>
-                    <NewEmployee addDentist={data.addDentist}/>
-                    <NewPatient newPatient={data.newPatient} {...data}/>
+                    <NewEmployee {...data}/>
+                    <NewPatient {...data}/>
                     <NewIllness {...data}/>
         </div>
     )
