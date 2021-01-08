@@ -40,9 +40,9 @@ class App extends React.Component {
         alert("Dentist is marked ill, check the calendar for planning.")
     }
 
-    makePatientSick(newList){
+    makePatientSick(appointments){
         this.setState ({
-            appointments: newList
+            appointments
         })
     }
 

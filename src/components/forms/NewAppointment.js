@@ -112,7 +112,6 @@ class NewAppointment extends React.Component {
     }
     
     render () {
-        console.log(this.state)
         //use this for the list of patients
         const getPatients = this.state.patients.map(person => {
             return <NewAppointmentPerson {...person} key={person.id}/>

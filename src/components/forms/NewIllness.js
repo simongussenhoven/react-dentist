@@ -24,8 +24,8 @@ class NewIllness extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         //get the type and person id from the form
-        const type = event.target.type.value
-        const id = event.target.id.value
+        const type = parseInt(event.target.type.value)
+        const id = parseInt(event.target.id.value)
 
         //for dentists, just change the isIll boolean and pass back to App
         if (type === "dentists") {
@@ -36,15 +36,10 @@ class NewIllness extends React.Component {
 
         //for patients, get the array of appointments and
         else {   
-            const id = parseInt(event.target.id.value);
-            const appointments = this.state.appointments.filter (app => {
+            const appointments = this.state.appointments.filter(app => {
                 return app.patient.id !== id
-                }
-            )
-            this.setState ({
-                appointments
             })
-            this.props.makePatientSick(this.state.appointments)
+            this.props.makePatientSick(appointments)
         }
         event.target.reset();
     }
