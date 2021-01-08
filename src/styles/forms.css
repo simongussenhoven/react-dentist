@@ -1,99 +1,99 @@
 .formcontainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
 }
 
 form {
-  background: #dbdbdb;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 1px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  margin: 10px;
-  padding: 10px;
-  -webkit-filter: drop-shadow(4px 2px 2px #414141);
-          filter: drop-shadow(4px 2px 2px #414141);
+    background: #dbdbdb;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 1px;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    margin: 10px;
+    padding: 10px;
+    -webkit-filter: drop-shadow(4px 2px 2px #414141);
+            filter: drop-shadow(4px 2px 2px #414141);
 }
 
 form h1,
 form h2 {
-  margin: 15px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+    margin: 15px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
 }
 
 form select {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 form input,
 form select,
 form label {
-  margin: 10px 20px 10px 20px;
-  height: 30px;
-  font-size: 16px;
-  padding-left: 10px;
-  -webkit-filter: drop-shadow(2px 2px 2px #414141);
-          filter: drop-shadow(2px 2px 2px #414141);
+    margin: 10px 20px 10px 20px;
+    height: 30px;
+    font-size: 16px;
+    padding-left: 10px;
+    -webkit-filter: drop-shadow(2px 2px 2px #414141);
+            filter: drop-shadow(2px 2px 2px #414141);
 }
 
 form label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-filter: none;
-          filter: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-filter: none;
+            filter: none;
 }
 
 form .submit {
-  margin-top: auto;
-  height: 35px;
-  -webkit-transition: ease-in-out 0.5s;
-  transition: ease-in-out 0.5s;
-  cursor: pointer;
+    margin-top: auto;
+    height: 35px;
+    -webkit-transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.5s;
+    cursor: pointer;
 }
 
 form .submit:hover {
-  background-color: orange;
-  -webkit-transition: ease-in-out 0.1s;
-  transition: ease-in-out 0.1s;
+    background-color: orange;
+    -webkit-transition: ease-in-out 0.1s;
+    transition: ease-in-out 0.1s;
 }
 
 .checkboxes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding-left: 30px;
-  border: 1px solid white;
-  width: 80%;
-  -ms-flex-item-align: center;
-      align-self: center;
-  margin: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding-left: 30px;
+    border: 1px solid white;
+    width: 80%;
+    -ms-flex-item-align: center;
+        align-self: center;
+    margin: 20px;
 }
 
 .checkboxes input {
-  margin: 0px 10px 0px 10px;
-  width: 25px;
-  padding-left: 30px;
-  cursor: pointer;
+    margin: 0px 10px 0px 10px;
+    width: 25px;
+    padding-left: 30px;
+    cursor: pointer;
 }
 /*# sourceMappingURL=forms.css.map */

@@ -15,8 +15,9 @@ nav li {
 }
 
 nav {
-  margin-bottom: 4rem;
   font-size: 2rem;
+  margin: 50px;
+  margin-bottom: 20px;
 }
 
 nav a {

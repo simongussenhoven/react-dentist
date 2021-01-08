@@ -65,8 +65,7 @@ class App extends React.Component {
         const checkboxes = Array.from(document.getElementsByClassName('skill-checkbox'));
     
         //check which skills is added and push to skills array of employee
-        const skills = checkboxes.map(checkbox => {
-            if (checkbox.checked){return checkbox.value}
+        const skills = checkboxes.map(checkbox => {if (checkbox.checked){return checkbox.value} else {return null}
         })
 
         //compile the person
@@ -122,17 +121,20 @@ class App extends React.Component {
 
         //function to edit an appointment, used in calendar
         editAppointment (appId) {
+            //ask user for a day, and store available times in "times"
             const selectedDay = parseInt(prompt("Enter a new day (1 - 28)"));
             const selectedApp = this.state.appointments.find(app => app.id === appId);
-            const appsOnTime = this.state.appointments
+            const appsOnDay = this.state.appointments
                 .filter(app => app.day === selectedDay)
-                .filter(app => app.time === selectedApp.time);
-            let times = Array.from({length:11},(v,k)=>k+8);
-            appsOnTime.forEach(app => {
+            let times = Array.from({length:11},(v,k)=>k+8)
+            let blockedTimes = []
+            appsOnDay.forEach(app => {
                 if(app.dentist.id === selectedApp.dentist.id || app.assistant.id === selectedApp.assistant.id){
-                    times = times.filter(time => app.time !== time)
+                    times = times.filter(time => time !== app.time)
                 }
             })
+
+            //ask user for a time, and send it to appointments
             const selectedTime = parseInt(prompt(`Pick an available time (${times})`))
             if(times.includes(selectedTime)){
                 selectedApp.time = selectedTime;
