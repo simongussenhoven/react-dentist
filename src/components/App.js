@@ -56,15 +56,8 @@ class App extends React.Component {
     //function to add dentist, used in newEmployee
     addDentist (event) {
         event.preventDefault();
-        //set skills to be filled
-
-        //get the type of employee to set
         const type = event.target.type.value;
-
-        //get all the checkboxs from the form
         const checkboxes = Array.from(document.getElementsByClassName('skill-checkbox'));
-    
-        //check which skills is added and push to skills array of employee
         const skills = checkboxes.map(checkbox => {if (checkbox.checked){return checkbox.value} else {return null}
         })
 

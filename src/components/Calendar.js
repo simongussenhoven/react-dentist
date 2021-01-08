@@ -21,10 +21,10 @@ export default ({ appointments, removeAppointment, editAppointment }) => {
         .values(appointmentsByDay)
         .map((appointmentsInDay, index) => (
         <DayInMonth 
-        appointments={appointmentsInDay} 
-        key={index} 
-        removeAppointment={removeAppointment}
-        editAppointment={editAppointment}
+            appointments={appointmentsInDay} 
+            key={index} 
+            removeAppointment={removeAppointment}
+            editAppointment={editAppointment}
         />
     ));
 

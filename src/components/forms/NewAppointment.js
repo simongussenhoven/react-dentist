@@ -128,7 +128,7 @@ class NewAppointment extends React.Component {
         .map(person => {return <NewAppointmentPerson {...person} key={person.id}/>})
 
         //use this to get the available times for the selected day, with the selected dentist and assistant
-        const times = Array.from({length:11},(v,k)=>k+8);
+        
         const day = this.state.selectedDay;
         const dentist = this.state.selectedDentist;
         const assistant = this.state.selectedAssistant;
@@ -137,36 +137,23 @@ class NewAppointment extends React.Component {
         })
 
         //check which timeslot is available
-        const availableTimes = [];
-        times.forEach(time => {
-            let isFree = true;
-            appsInDay.forEach(app => {
-                if(app.time === time){
-                    if(dentist !== app.dentist.id){
-                        if(assistant === null || assistant !== app.assistant.id){
-                        //this is ok, don't set isFree to false
-                        }
-                        else {
-                            isFree = false
-                            //assistant is busy
-                        }
-                    }
-                    else {
-                        isFree = false
-                        //dentist is busy
-                    }
+        let times = Array.from({length:11},(v,k)=>k+8);
+        appsInDay.forEach(app => {
+            if(dentist !== app.dentist.id){
+                if(assistant === null || assistant !== app.assistant.id){
+                    //do nothing, this timeslot is free!
                 }
                 else {
-                    //this is ok, don't set isFree to false
+                    times = times.filter(time => time !== app.time)
                 }
-                if(isFree === true && !availableTimes.includes(time)){
-                    availableTimes.push(time)
-                }
-            })
+            }
+            else {
+                times = times.filter(time => time !== app.time)
+            }
         })
 
         //compile the list for the timeslots
-        const eligibleTimes = availableTimes.map(time => {
+        const eligibleTimes = times.map(time => {
             return <NewAppointmentTime time={time} key={time}/>
         })
 

@@ -60,8 +60,6 @@ const data = {
     assistants: [
         {id:1, firstname:"Clara", surname:"Knalfuif", mail: "clara.knalfuif@tandartspraktijkbvt.nl", skills: ["Set filling", "Dental surgery"], isIll: false},
         {id:2, firstname:"Gert", surname:"van der Samson", mail: "gert.vandersamson@tandartspraktijkbvt.nl", skills: ["Set crown", "Set filling", "Dental surgery"], isIll: false},
-        {id:3, firstname:"Mahatma", surname:"Gandi", mail: "Mahatma.Ghandi@tandartspraktijkbvt.nl", skills: ["Set crown", "Set filling"], isIll: false},
-        {id:4, firstname:"Bep", surname:"Kanalles", mail: "bep.kanalles@tandartspraktijkbvt.nl", skills: ["Set filling", "Set crown", "Pull tooth", "Dental surgery"], isIll: false}
     ]
 }
 export default data
