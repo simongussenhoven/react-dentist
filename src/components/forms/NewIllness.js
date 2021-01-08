@@ -14,17 +14,18 @@ class NewIllness extends React.Component {
 
     //updating changes made in the form
     handleChange = (event) => { 
-        const selection = this.props.data[event.target.value]
+        const selected = this.props.data[event.target.value]
         this.setState ({
-            selected: selection
+            selected
         })
     }
 
     //Handling submit event to mark as ill
     handleSubmit = (event) => {
         event.preventDefault();
+
         //get the type and person id from the form
-        const type = parseInt(event.target.type.value)
+        const type = event.target.type.value
         const id = parseInt(event.target.id.value)
 
         //for dentists, just change the isIll boolean and pass back to App

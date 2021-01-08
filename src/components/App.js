@@ -13,15 +13,9 @@ class App extends React.Component {
     constructor(){
         super();
         this.state = {
-            patients: data.patients.sort((a, b) => {
-                return a.firstname.localeCompare(b.firstname)
-            }),
-            dentists: data.dentists.sort((a, b) => {
-                return a.firstname.localeCompare(b.firstname)
-            }),
-            assistants: data.assistants.sort((a, b) => {
-                return a.firstname.localeCompare(b.firstname)
-            }),
+            patients: data.patients,
+            dentists: data.dentists,
+            assistants: data.assistants,
             appointments: randomAppointments
         }
     this.makeDentistSick = this.makeDentistSick.bind(this);
@@ -30,17 +24,29 @@ class App extends React.Component {
     this.addAppointment = this.addAppointment.bind(this);
     this.removeAppointment = this.removeAppointment.bind(this);
     this.editAppointment = this.editAppointment.bind(this);
+    this.newPatient = this.newPatient.bind(this);
     }
 
-
-    makeDentistSick(newList){
-        this.setState ({
-            dentists: newList
+    newPatient (patient){
+        const patients = [...this.state.patients, patient]
+        patients.sort((a, b) => {
+            return a.firstname.localeCompare(b.firstname)
         })
+        this.setState ({
+            patients
+        })
+        alert(`Patient "${patient.firstname} ${patient.surname}" added`)
+    }
+
+    makeDentistSick(dentists){
         alert("Dentist is marked ill, check the calendar for planning.")
+        this.setState ({
+            dentists
+        })
     }
 
     makePatientSick(appointments){
+        alert("Patient marked ill. Appointments removed.")
         this.setState ({
             appointments
         })
@@ -121,7 +127,6 @@ class App extends React.Component {
             let times = Array.from({length:11},(v,k)=>k+8);
             appsOnTime.forEach(app => {
                 if(app.dentist.id === selectedApp.dentist.id || app.assistant.id === selectedApp.assistant.id){
-                    console.log(app.time)
                     times = times.filter(time => app.time !== time)
                 }
             })
@@ -129,7 +134,8 @@ class App extends React.Component {
             if(times.includes(selectedTime)){
                 selectedApp.time = selectedTime;
                 selectedApp.day = selectedDay;
-                const appointments = [...this.state.appointments, selectedApp];
+                const appointments = this.state.appointments.filter(app => app.id !== appId)
+                appointments.push(selectedApp);
                 this.setState({
                     appointments
                 })
@@ -174,6 +180,7 @@ class App extends React.Component {
                     makePatientSick={this.makePatientSick}
                     addDentist={this.addDentist}
                     addAppointment={this.addAppointment}
+                    newPatient={this.newPatient}
                     />
                 </Route>
                 </Switch>

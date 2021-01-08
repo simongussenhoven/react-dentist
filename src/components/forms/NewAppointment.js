@@ -40,9 +40,9 @@ class NewAppointment extends React.Component {
     }
 
         //when the type is selected, check which employees have the required skill
-    getEligible (event) {
-        const dentists = this.state.dentists.filter(dentist => {
-            return dentist.skills.includes(event.target.value)
+        getEligible (event) {
+            const dentists = this.state.dentists.filter(dentist => {
+                return dentist.skills.includes(event.target.value)
         })
         
         const assistants = this.state.assistants.filter(assist => {
@@ -113,19 +113,19 @@ class NewAppointment extends React.Component {
     
     render () {
         //use this for the list of patients
-        const getPatients = this.state.patients.map(person => {
-            return <NewAppointmentPerson {...person} key={person.id}/>
-        })
+        const getPatients = this.state.patients
+        .sort((a, b) => {return a.firstname.localeCompare(b.firstname)})
+        .map(person => {return <NewAppointmentPerson {...person} key={person.id}/>})
         
         //use this fo the list of dentists with the selectes skill
-        const eligibleDentists = this.state.eligibleDentists.map(person => {
-            return <NewAppointmentPerson {...person} key={person.id}/>
-        })
+        const eligibleDentists = this.state.eligibleDentists
+        .sort((a, b) => {return a.firstname.localeCompare(b.firstname)})
+        .map(person => {return <NewAppointmentPerson {...person} key={person.id}/>})
 
         //use this for the assistants with the selected skill
-        const eligibleAssistants = this.state.eligibleAssistants.map(person => {
-            return <NewAppointmentPerson {...person} key={person.id}/>
-        })
+        const eligibleAssistants = this.state.eligibleAssistants
+        .sort((a, b) => {return a.firstname.localeCompare(b.firstname)})
+        .map(person => {return <NewAppointmentPerson {...person} key={person.id}/>})
 
         //use this to get the available times for the selected day, with the selected dentist and assistant
         const times = Array.from({length:11},(v,k)=>k+8);

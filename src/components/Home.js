@@ -8,10 +8,10 @@ import NewAppointment from './forms/NewAppointment'
 function Home (data) {
     return(
         <div className="formcontainer">
-                    <NewAppointment {...data} addAppointment={data.addAppointment}/>
+                    <NewAppointment {...data}/>
                     <NewEmployee addDentist={data.addDentist}/>
-                    <NewPatient/>
-                    <NewIllness markIll={data.markIll} {...data}/>
+                    <NewPatient newPatient={data.newPatient} {...data}/>
+                    <NewIllness {...data}/>
         </div>
     )
 }
