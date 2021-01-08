@@ -1,7 +1,6 @@
 import React from 'react'
 import NewAppointmentPerson from './NewAppointmentPerson'
 import NewAppointmentTime from './NewAppointmentTime'
-import uuid from 'react-uuid'
 
 class NewAppointment extends React.Component {
     constructor(props) {

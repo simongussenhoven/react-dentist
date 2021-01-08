@@ -29,6 +29,7 @@ class App extends React.Component {
     this.addDentist = this.addDentist.bind(this);
     this.addAppointment = this.addAppointment.bind(this);
     this.removeAppointment = this.removeAppointment.bind(this);
+    this.editAppointment = this.editAppointment.bind(this);
     }
 
 
@@ -88,26 +89,51 @@ class App extends React.Component {
         event.target.reset();
         alert("Person added. Thank you.")
         }
-
+        
+        //function to remove the appointment
         addAppointment(newAppointment){
             const appointments = this.state.appointments
             appointments.push(newAppointment)
-            console.log(newAppointment)
             this.setState({
                 appointments
             })
             alert('Appointment added, thank you.')
         }
 
-        removeAppointment(appointment){
-            const appointments = this.state.appointments.filter(app => {
-                return app.id !== appointment
-            })
-            this.setState ({
-                appointments
-            })
+        removeAppointment(appointment){   
+        const answer = window.confirm("Do you want to remove this appointment?");
+            if (answer) {
+                const appointments = this.state.appointments.filter(app => {
+                    return app.id !== appointment
+                })
+                this.setState ({
+                    appointments
+                })
+            }
         }
 
+        editAppointment (id) {
+            const day = parseInt(prompt("Enter a new day (1 - 28)"));
+            const selectedApp = this.state.appointments.find(app => app.id === id);
+            const appsOnTime = this.state.appointments
+                .filter(app => app.day === day)
+                .filter(app => app.time === selectedApp.time);
+            
+            const times = Array.from({length:11},(v,k)=>k+8);
+            
+            const freeTimes = [];
+            times.forEach(time => {
+                let isFree = true;
+                appsOnTime.forEach(app => {
+                    if (app.dentist.id === selectedApp.dentist.id || app.assistant.id === selectedApp.assistant.id){isFree = false}})
+                if(isFree){freeTimes.push(time)}
+            })
+            const selectedTime = prompt(`Select a free time ${freeTimes}`);
+            if (selectedTime.includes(freeTimes){
+                selectedApp.time = selectedTime
+                this.state.appointments.filter(app => {return app.id !== id})
+            }
+        }
     render() {
         return(
         <Router>
@@ -128,7 +154,11 @@ class App extends React.Component {
             <main>
                 <Switch>
                 <Route path="/calendar">
-                    <Calendar appointments={this.state.appointments} removeAppointment={this.removeAppointment}/>
+                    <Calendar 
+                    appointments={this.state.appointments} 
+                    removeAppointment={this.removeAppointment}
+                    editAppointment={this.editAppointment}
+                    />
                 </Route>
                 <Route path="/day">
                     <Day appointments={this.state.appointments.filter(app => app.day === 1)} />

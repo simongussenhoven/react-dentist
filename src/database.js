@@ -6,7 +6,7 @@ const data = {
         {id:4, firstname:"Boycie", surname:"Wellesley", birthyear:1994, phone:"719-240-3921", mail:"bwellesley3@army.mil", isIll: false}, 
         {id:5, firstname:"Raquel", surname:"Augustin", birthyear:2007, phone:"218-975-2775", mail:"raugustin4@moonfruit.com", isIll: false}, 
         {id:6, firstname:"Zack", surname:"Strowlger", birthyear:2003, phone:"701-726-3883", mail:"zstrowlger5@delicious.com", isIll: false}, 
-        {id:7, firstname:"Chauncey", surname:"Fetherstonhaugh", birthyear:2001, phone:"347-118-9439", mail:"cfetherstonhaugh6@pen.io", isIll: false}, 
+        {id:7, firstname:"Chauncey", surname:"Pobli", birthyear:2001, phone:"347-118-9439", mail:"cfetherstonhaugh6@pen.io", isIll: false}, 
         {id:8, firstname:"Katina", surname:"Seakings", birthyear:2013, phone:"981-737-1263", mail:"kseakings7@unicef.org", isIll: false}, 
         {id:9, firstname:"Viviana", surname:"Zavattero", birthyear:1945, phone:"424-536-4188", mail:"vzavattero8@imageshack.us", isIll: false}, 
         {id:10, firstname:"Cahra", surname:"Neil", birthyear:1986, phone:"921-966-8086", mail:"cneil9@dailymotion.com", isIll: false}, 
